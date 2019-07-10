@@ -3,4 +3,7 @@
 
 *.exe
 *.pdb
+*.log
+*.tlog
+*.obj
 
