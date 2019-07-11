@@ -8,9 +8,28 @@ int main() {
     const GLubyte *version;
     GLuint vao;
     GLuint vbo;
+    GLuint ib;
 
     /* geometry to use. these are 3 xyz points (9 floats total) to make a triangle */
-    GLfloat points[] = { 0.0f, 0.5f, 0.0f, 0.5f, -0.5f, 0.0f, -0.5f, -0.5f, 0.0f };
+    GLfloat points[] = {
+        -0.5f, 0.5f, 0.0f,
+        -0.5f, -0.5f, 0.0f,
+        0.5f, -0.5f, 0.0f,
+        0.5f, 0.5f, 0.0f,
+        0.5f, 0.5f, 1.0f,
+        0.5f, -0.5f, 1.0f,
+        -0.5f, -0.5f, 1.0f,
+        -0.5f, 0.5f, 1.0f,
+    };
+
+    unsigned int indices[] = {
+        0,1,2,
+        2,3,0,
+        2,3,4,
+        4,5,2,
+        0,3,7,
+        7,4,3
+    };
 
     /* these are the strings of code for the shaders
     the vertex shader positions each vertex point */
@@ -72,7 +91,7 @@ int main() {
     data on the graphics adapter's memory. in our case - the vertex points */
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, 9 * sizeof(GLfloat), points, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof points, points, GL_STATIC_DRAW);
 
     /* the vertex array object (VAO) is a little descriptor that defines which
     data from vertex buffer objects should be used as input variables to vertex
@@ -88,6 +107,10 @@ int main() {
     /* "attribute #0 is created from every 3 variables in the above buffer, of type
     float (i.e. make me vec3s)" */
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+
+    glGenBuffers(1, &ib);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
     /* here we copy the shader strings into GL shaders, and compile them. we
     then create an executable shader 'program' and attach both of the compiled
@@ -117,7 +140,8 @@ int main() {
         glUseProgram(shader_programme);
         glBindVertexArray(vao);
         /* draw points 0-3 from the currently bound VAO with current in-use shader */
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        //glDrawArrays(GL_TRIANGLES, 0, sizeof(points) / sizeof(*points));
+        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(*indices), GL_UNSIGNED_INT, nullptr);
         /* update other events like input handling */
         glfwPollEvents();
         /* put the stuff we've been drawing onto the display */
