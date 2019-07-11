@@ -4,8 +4,9 @@
 
 // function declaration
 GLfloat* GetLines();
+void _update_fps_counter(GLFWwindow *window);
 
-const int nPoints = 3000;
+const int nPoints = 10000;
 
 int main() {
     GLFWwindow *window = NULL;
@@ -23,8 +24,9 @@ int main() {
     the vertex shader positions each vertex point */
     const char *vertex_shader = "#version 410\n"
         "in vec3 vp;"
+        "uniform float offsetX;"
         "void main () {"
-        "  gl_Position = vec4(vp, 1.0);"
+        "  gl_Position = vec4(vp.x + offsetX, vp.y, vp.z, 1.0);"
         "}";
 
     /* the fragment shader colours each fragment (pixel-sized area of the
@@ -118,7 +120,14 @@ int main() {
             that we have a 'currently displayed' surface, and 'currently being drawn'
             surface. hence the 'swap' idea. in a single-buffering system we would see
             stuff being drawn one-after-the-other */
+    float offsetX = 0;
     while (!glfwWindowShouldClose(window)) {
+        _update_fps_counter(window);
+        offsetX += 0.001;
+        if (offsetX > 0.2)
+            offsetX = -0.2;
+        const auto location = glGetUniformLocation(shader_programme, "offsetX");
+        glUniform1f(location, offsetX);
         /* wipe the drawing surface clear */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glUseProgram(shader_programme);
@@ -170,4 +179,20 @@ GLfloat* GetLines()
     }
 
     return points;
+}
+
+void _update_fps_counter(GLFWwindow *window) {
+    static double previous_seconds = glfwGetTime();
+    static int frame_count;
+    double current_seconds = glfwGetTime();
+    double elapsed_seconds = current_seconds - previous_seconds;
+    if (elapsed_seconds > 0.25) {
+        previous_seconds = current_seconds;
+        double fps = (double)frame_count / elapsed_seconds;
+        char tmp[128];
+        sprintf_s(tmp, "opengl @ fps: %.2f", fps);
+        glfwSetWindowTitle(window, tmp);
+        frame_count = 0;
+    }
+    frame_count++;
 }
