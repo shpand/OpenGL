@@ -5,6 +5,9 @@
 #include "Asserter.h"
 #include "Shader.h"
 
+#include "vendor/glm/glm.hpp";
+#include "vendor/glm/gtc/matrix_transform.hpp";
+
 int main() {
     GLFWwindow *window = NULL;
     const GLubyte *renderer;
@@ -121,7 +124,31 @@ int main() {
             that we have a 'currently displayed' surface, and 'currently being drawn'
             surface. hence the 'swap' idea. in a single-buffering system we would see
             stuff being drawn one-after-the-other */
+
+    glm::mat4 projection = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+    glm::mat4 viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-0.0f, 0, 0));//it's essentially a camera that we move
+
+
+    float offsetX = 0;
+    float mover = 0.001;
     while (!glfwWindowShouldClose(window)) {
+        offsetX += mover;
+        if(offsetX > 1)
+        {
+            offsetX = 1;
+            mover = -mover;
+        }
+        else if (offsetX < -1)
+        {
+            offsetX = -1;
+            mover = -mover;
+        }
+        glm::vec3 translationX(offsetX, 0, 0);
+        glm::mat4 model = glm::translate(glm::mat4(1.0f), translationX);//objects transformation
+        glm::mat4 modelViewProjection = projection * viewMatrix * model;
+        shader.SetUniformMat4f("u_MVP", modelViewProjection);
+
+
         /* wipe the drawing surface clear */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.2, 0.2, 0.2, 1);
