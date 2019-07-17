@@ -3,6 +3,7 @@
 #include <cstdio>
 #include "Cube.h"
 #include "Asserter.h"
+#include "Shader.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -19,27 +20,6 @@ int main() {
     Cube* cube2 = new Cube(-0.5, -0.5, 0, 0.5, 1, 1);
     std::vector<GLfloat> points2 = cube2->GetPoints();
     std::vector<int> indices2 = cube2->GetIndicies();
-
-    /* these are the strings of code for the shaders
-    the vertex shader positions each vertex point */
-    const char *vertex_shader = "#version 410\n"
-        "in vec3 vp;"
-        "void main () {"
-        "  gl_Position = vec4(vp, 1.0);"
-        "}";
-
-    /* the fragment shader colours each fragment (pixel-sized area of the
-    triangle) */
-    const char *fragment_shader = "#version 410\n"
-        "out vec4 frag_colour;"
-        "void main () {"
-        "  frag_colour = vec4(0.5, 0.0, 0.5, 1.0);"
-        "}";
-
-    /* GL shader objects for vertex and fragment shader [components] */
-    GLuint vert_shader, frag_shader;
-    /* GL shader programme object [combined, to link] */
-    GLuint shader_programme;
 
     /* start GL context and O/S window using the GLFW helper library */
     if (!glfwInit()) {
@@ -130,16 +110,9 @@ int main() {
     then create an executable shader 'program' and attach both of the compiled
             shaders. we link this, which matches the outputs of the vertex shader to
     the inputs of the fragment shader, etc. and it is then ready to use */
-    vert_shader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vert_shader, 1, &vertex_shader, NULL);
-    glCompileShader(vert_shader);
-    frag_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(frag_shader, 1, &fragment_shader, NULL);
-    glCompileShader(frag_shader);
-    shader_programme = glCreateProgram();
-    glAttachShader(shader_programme, frag_shader);
-    glAttachShader(shader_programme, vert_shader);
-    glLinkProgram(shader_programme);
+
+    Shader shader("Basic.shader");
+    shader.Bind();
 
     /* this loop clears the drawing surface, then draws the geometry described
             by the VAO onto the drawing surface. we 'poll events' to see if the window
@@ -151,7 +124,7 @@ int main() {
     while (!glfwWindowShouldClose(window)) {
         /* wipe the drawing surface clear */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glUseProgram(shader_programme);
+        glClearColor(0.2, 0.2, 0.2, 1);
         glBindVertexArray(vao);
         /* draw points 0-3 from the currently bound VAO with current in-use shader */
         //glDrawArrays(GL_TRIANGLES, 0, sizeof(points) / sizeof(*points));

@@ -4,7 +4,7 @@
 
 Cube::Cube(const float centerX, const float centerY, const float centerZ, const float width, const float height, const float depth)
 {
-    _points = Cube::CalculatePoints(centerX, centerY, centerZ, width, height, depth);
+    _points = CalculatePoints(centerX, centerY, centerZ, width, height, depth);
 }
 
 
