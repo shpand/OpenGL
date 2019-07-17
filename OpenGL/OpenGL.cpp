@@ -1,6 +1,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <cstdio>
+#include "Cube.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -10,26 +11,9 @@ int main() {
     GLuint vbo;
     GLuint ib;
 
-    /* geometry to use. these are 3 xyz points (9 floats total) to make a triangle */
-    GLfloat points[] = {
-        -0.5f, 0.5f, 0.0f,
-        -0.5f, -0.5f, 0.0f,
-        0.5f, -0.5f, 0.0f,
-        0.5f, 0.5f, 0.0f,
-        0.5f, 0.5f, 1.0f,
-        0.5f, -0.5f, 1.0f,
-        -0.5f, -0.5f, 1.0f,
-        -0.5f, 0.5f, 1.0f,
-    };
-
-    unsigned int indices[] = {
-        0,1,2,
-        2,3,0,
-        2,3,4,
-        4,5,2,
-        0,3,7,
-        7,4,3
-    };
+    Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 1);
+    std::vector<GLfloat> points = cube->GetPoints();
+    std::vector<int> indices = cube->GetIndicies();
 
     /* these are the strings of code for the shaders
     the vertex shader positions each vertex point */
@@ -89,9 +73,10 @@ int main() {
 
     /* a vertex buffer object (VBO) is created here. this stores an array of
     data on the graphics adapter's memory. in our case - the vertex points */
+    const int pointsSizeInBytes = points.size() * sizeof(GLfloat);
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof points, points, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, pointsSizeInBytes, &points[0], GL_STATIC_DRAW);
 
     /* the vertex array object (VAO) is a little descriptor that defines which
     data from vertex buffer objects should be used as input variables to vertex
@@ -108,9 +93,10 @@ int main() {
     float (i.e. make me vec3s)" */
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
+    const int indicesSizeInBytes = indices.size() * sizeof(int);
     glGenBuffers(1, &ib);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSizeInBytes, &indices[0], GL_STATIC_DRAW);
 
     /* here we copy the shader strings into GL shaders, and compile them. we
     then create an executable shader 'program' and attach both of the compiled
@@ -141,7 +127,7 @@ int main() {
         glBindVertexArray(vao);
         /* draw points 0-3 from the currently bound VAO with current in-use shader */
         //glDrawArrays(GL_TRIANGLES, 0, sizeof(points) / sizeof(*points));
-        glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(*indices), GL_UNSIGNED_INT, nullptr);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, nullptr);
         /* update other events like input handling */
         glfwPollEvents();
         /* put the stuff we've been drawing onto the display */
