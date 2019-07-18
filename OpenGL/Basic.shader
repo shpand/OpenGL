@@ -5,9 +5,12 @@ layout(location = 0) in vec4 position;
 
 uniform mat4 u_MVP;
 
+out vec4 o_position;
+
 void main()
 {
     gl_Position = u_MVP * position;
+    o_position = gl_Position;
 }
 
 
@@ -16,7 +19,9 @@ void main()
 
 layout(location = 0) out vec4 color;
 
+in vec4 o_position;
+
 void main()
 {
-    color = vec4(0.5, 0, 0.5, 1.0);
+    color = o_position;
 }
