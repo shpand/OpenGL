@@ -16,11 +16,11 @@ int main() {
     GLuint vbo, vbo2;
     GLuint ib, ib2;
 
-    Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 1);
+    Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 0.5);
     std::vector<GLfloat> points = cube->GetPoints();
     std::vector<int> indices = cube->GetIndicies();
 
-    Cube* cube2 = new Cube(-0.5, -0.5, 0, 0.5, 1, 1);
+    Cube* cube2 = new Cube(-0.5, -0.5, 0, 0.5, 1, 0.5);
     std::vector<GLfloat> points2 = cube2->GetPoints();
     std::vector<int> indices2 = cube2->GetIndicies();
 
