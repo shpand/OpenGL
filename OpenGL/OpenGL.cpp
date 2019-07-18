@@ -161,7 +161,7 @@ int main() {
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, nullptr);
 
         GLCall(glBindVertexArray(vao2));
-        GLCall(glDrawElements(GL_TRIANGLES, indices2.size(), GL_UNSIGNED_INT, nullptr));
+        GLCall(glDrawElements(GL_LINE_STRIP, indices2.size(), GL_UNSIGNED_INT, nullptr));
 
         /* update other events like input handling */
         glfwPollEvents();
