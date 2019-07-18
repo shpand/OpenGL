@@ -171,11 +171,13 @@
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asserter.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Basic.shader" />

@@ -7,13 +7,13 @@
 
 #include "vendor/glm/glm.hpp";
 #include "vendor/glm/gtc/matrix_transform.hpp";
+#include "VertexBuffer.h"
 
 int main() {
     GLFWwindow *window = NULL;
     const GLubyte *renderer;
     const GLubyte *version;
     GLuint vao, vao2;
-    GLuint vbo, vbo2;
     GLuint ib, ib2;
 
     Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 0.5);
@@ -62,9 +62,7 @@ int main() {
     /* a vertex buffer object (VBO) is created here. this stores an array of
     data on the graphics adapter's memory. in our case - the vertex points */
     const int pointsSizeInBytes = points.size() * sizeof(GLfloat);
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, pointsSizeInBytes, &points[0], GL_STATIC_DRAW);
+    VertexBuffer vb(&points[0], pointsSizeInBytes);
 
     /* the vertex array object (VAO) is a little descriptor that defines which
     data from vertex buffer objects should be used as input variables to vertex
@@ -76,7 +74,7 @@ int main() {
     glEnableVertexAttribArray(0);
     /* this VBO is already bound, but it's a good habit to explicitly specify which
     VBO's data the following vertex attribute pointer refers to */
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    vb.Bind();
     /* "attribute #0 is created from every 3 variables in the above buffer, of type
     float (i.e. make me vec3s)" */
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
@@ -89,15 +87,13 @@ int main() {
 
     //Prepare 2nd cube-----------------------------------------------------------
     const int pointsSizeInBytes2 = points2.size() * sizeof(GLfloat);
-    glGenBuffers(1, &vbo2);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo2);
-    glBufferData(GL_ARRAY_BUFFER, pointsSizeInBytes2, &points2[0], GL_STATIC_DRAW);
+    VertexBuffer vb2(&points2[0], pointsSizeInBytes2);
 
     GLCall(glGenVertexArrays(1, &vao2));
     GLCall(glBindVertexArray(vao2));
     /* "attribute #0 should be enabled when this vao is bound" */
     GLCall(glEnableVertexAttribArray(0));
-    GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo2));
+    vb2.Bind();
     /* "attribute #0 is created from every 3 variables in the above buffer, of type
     float (i.e. make me vec3s)" */
     GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL));
