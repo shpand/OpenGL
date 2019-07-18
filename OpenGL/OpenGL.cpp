@@ -130,9 +130,11 @@ int main() {
 
 
     float offsetX = 0;
-    float mover = 0.001;
+    float rotateDegree = 0;
+    float mover = 0.0002;
     while (!glfwWindowShouldClose(window)) {
         offsetX += mover;
+        rotateDegree += mover;
         if(offsetX > 1)
         {
             offsetX = 1;
@@ -145,6 +147,7 @@ int main() {
         }
         glm::vec3 translationX(offsetX, 0, 0);
         glm::mat4 model = glm::translate(glm::mat4(1.0f), translationX);//objects transformation
+        model = glm::rotate(model, glm::radians(rotateDegree * 90), glm::vec3(1.f, 1.f, 1.f));
         glm::mat4 modelViewProjection = projection * viewMatrix * model;
         shader.SetUniformMat4f("u_MVP", modelViewProjection);
 
