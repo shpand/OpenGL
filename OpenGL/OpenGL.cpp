@@ -10,11 +10,10 @@
 #include "VertexBuffer.h"
 #include "VertexArray.h"
 #include "IndexBuffer.h"
+#include "Renderer.h"
 
 int main() {
     GLFWwindow *window = NULL;
-    const GLubyte *renderer;
-    const GLubyte *version;
 
     Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 0.5);
     std::vector<GLfloat> points = cube->GetPoints();
@@ -48,9 +47,9 @@ int main() {
     glewInit();
 
     /* get version info */
-    renderer = glGetString(GL_RENDERER); /* get renderer string */
-    version = glGetString(GL_VERSION);	 /* version as a string */
-    printf("Renderer: %s\n", renderer);
+    const GLubyte* graphicsCard = glGetString(GL_RENDERER); /* get renderer string */
+    const GLubyte* version = glGetString(GL_VERSION);	 /* version as a string */
+    printf("Graphics Card: %s\n", graphicsCard);
     printf("OpenGL version supported %s\n", version);
 
     /* tell GL to only draw onto a pixel if the shape is closer to the viewer
@@ -62,16 +61,14 @@ int main() {
     /* a vertex buffer object (VBO) is created here. this stores an array of
     data on the graphics adapter's memory. in our case - the vertex points */
     const int pointsSizeInBytes = points.size() * sizeof(GLfloat);
-    VertexBuffer vb(&points[0], pointsSizeInBytes);
+    const VertexBuffer vb(&points[0], pointsSizeInBytes);
     VertexBufferLayout layout;
     layout.Push<float>(3);
     //layout.Push<float>(2);//layout for texture coordinates
     VertexArray va;
     va.AddBuffer(vb, layout);
-
     //binding of indices must happen right after vb and va has been bound.
     IndexBuffer ib(&indices[0], indices.size());
-
 
     //Prepare 2nd cube-----------------------------------------------------------
     const int pointsSizeInBytes2 = points2.size() * sizeof(GLfloat);
@@ -103,6 +100,7 @@ int main() {
             surface. hence the 'swap' idea. in a single-buffering system we would see
             stuff being drawn one-after-the-other */
 
+    Renderer renderer;
     glm::mat4 projection = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
     glm::mat4 viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-0.0f, 0, 0));//it's essentially a camera that we move
 
@@ -133,13 +131,9 @@ int main() {
         /* wipe the drawing surface clear */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.2, 0.2, 0.2, 1);
-        va.Bind();
-        /* draw points 0-3 from the currently bound VAO with current in-use shader */
-        //glDrawArrays(GL_TRIANGLES, 0, sizeof(points) / sizeof(*points));
-        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, nullptr);
 
-        va2.Bind();
-        GLCall(glDrawElements(GL_LINE_STRIP, indices2.size(), GL_UNSIGNED_INT, nullptr));
+        renderer.Draw(va, ib, shader);
+        renderer.Draw(va2, ib2, shader);
 
         /* update other events like input handling */
         glfwPollEvents();
