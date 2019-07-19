@@ -8,12 +8,12 @@
 #include "vendor/glm/glm.hpp";
 #include "vendor/glm/gtc/matrix_transform.hpp";
 #include "VertexBuffer.h"
+#include "VertexArray.h"
 
 int main() {
     GLFWwindow *window = NULL;
     const GLubyte *renderer;
     const GLubyte *version;
-    GLuint vao, vao2;
     GLuint ib, ib2;
 
     Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 0.5);
@@ -63,21 +63,11 @@ int main() {
     data on the graphics adapter's memory. in our case - the vertex points */
     const int pointsSizeInBytes = points.size() * sizeof(GLfloat);
     VertexBuffer vb(&points[0], pointsSizeInBytes);
-
-    /* the vertex array object (VAO) is a little descriptor that defines which
-    data from vertex buffer objects should be used as input variables to vertex
-    shaders. in our case - use our only VBO, and say 'every three floats is a
-    variable' */
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-    /* "attribute #0 should be enabled when this vao is bound" */
-    glEnableVertexAttribArray(0);
-    /* this VBO is already bound, but it's a good habit to explicitly specify which
-    VBO's data the following vertex attribute pointer refers to */
-    vb.Bind();
-    /* "attribute #0 is created from every 3 variables in the above buffer, of type
-    float (i.e. make me vec3s)" */
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+    VertexBufferLayout layout;
+    layout.Push<float>(3);
+    //layout.Push<float>(2);//layout for texture coordinates
+    VertexArray va;
+    va.AddBuffer(vb, layout);
 
     const int indicesSizeInBytes = indices.size() * sizeof(int);
     glGenBuffers(1, &ib);
@@ -89,14 +79,11 @@ int main() {
     const int pointsSizeInBytes2 = points2.size() * sizeof(GLfloat);
     VertexBuffer vb2(&points2[0], pointsSizeInBytes2);
 
-    GLCall(glGenVertexArrays(1, &vao2));
-    GLCall(glBindVertexArray(vao2));
-    /* "attribute #0 should be enabled when this vao is bound" */
-    GLCall(glEnableVertexAttribArray(0));
-    vb2.Bind();
-    /* "attribute #0 is created from every 3 variables in the above buffer, of type
-    float (i.e. make me vec3s)" */
-    GLCall(glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL));
+    VertexBufferLayout layout2;
+    layout2.Push<float>(3);
+    //layout.Push<float>(2);//layout for texture coordinates
+    VertexArray va2;
+    va2.AddBuffer(vb2, layout2);
 
     const int indicesSizeInBytes2 = indices2.size() * sizeof(int);
     GLCall(glGenBuffers(1, &ib2));
@@ -151,12 +138,12 @@ int main() {
         /* wipe the drawing surface clear */
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.2, 0.2, 0.2, 1);
-        glBindVertexArray(vao);
+        va.Bind();
         /* draw points 0-3 from the currently bound VAO with current in-use shader */
         //glDrawArrays(GL_TRIANGLES, 0, sizeof(points) / sizeof(*points));
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, nullptr);
 
-        GLCall(glBindVertexArray(vao2));
+        va2.Bind();
         GLCall(glDrawElements(GL_LINE_STRIP, indices2.size(), GL_UNSIGNED_INT, nullptr));
 
         /* update other events like input handling */
