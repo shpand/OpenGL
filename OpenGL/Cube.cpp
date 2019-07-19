@@ -17,7 +17,7 @@ std::vector<GLfloat> Cube::GetPoints()
     return _points;
 }
 
-std::vector<int> Cube::GetIndicies()
+std::vector<unsigned> Cube::GetIndicies()
 {
     return _indicies;
 }

@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClCompile Include="Asserter.cpp" />
     <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="VertexArray.cpp" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <ClInclude Include="Asserter.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />

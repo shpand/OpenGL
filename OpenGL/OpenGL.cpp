@@ -9,20 +9,20 @@
 #include "vendor/glm/gtc/matrix_transform.hpp";
 #include "VertexBuffer.h"
 #include "VertexArray.h"
+#include "IndexBuffer.h"
 
 int main() {
     GLFWwindow *window = NULL;
     const GLubyte *renderer;
     const GLubyte *version;
-    GLuint ib, ib2;
 
     Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 0.5);
     std::vector<GLfloat> points = cube->GetPoints();
-    std::vector<int> indices = cube->GetIndicies();
+    std::vector<unsigned int> indices = cube->GetIndicies();
 
     Cube* cube2 = new Cube(-0.5, -0.5, 0, 0.5, 1, 0.5);
     std::vector<GLfloat> points2 = cube2->GetPoints();
-    std::vector<int> indices2 = cube2->GetIndicies();
+    std::vector<unsigned int> indices2 = cube2->GetIndicies();
 
     /* start GL context and O/S window using the GLFW helper library */
     if (!glfwInit()) {
@@ -69,10 +69,8 @@ int main() {
     VertexArray va;
     va.AddBuffer(vb, layout);
 
-    const int indicesSizeInBytes = indices.size() * sizeof(int);
-    glGenBuffers(1, &ib);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSizeInBytes, &indices[0], GL_STATIC_DRAW);
+    //binding of indices must happen right after vb and va has been bound.
+    IndexBuffer ib(&indices[0], indices.size());
 
 
     //Prepare 2nd cube-----------------------------------------------------------
@@ -85,10 +83,7 @@ int main() {
     VertexArray va2;
     va2.AddBuffer(vb2, layout2);
 
-    const int indicesSizeInBytes2 = indices2.size() * sizeof(int);
-    GLCall(glGenBuffers(1, &ib2));
-    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ib2));
-    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicesSizeInBytes2, &indices2[0], GL_STATIC_DRAW));
+    IndexBuffer ib2(&indices2[0], indices2.size());
     //End of preparing 2nd cube---------------------------------------------------
 
 
