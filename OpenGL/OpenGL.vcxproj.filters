@@ -22,6 +22,15 @@
     <Filter Include="Header Files\vendor">
       <UniqueIdentifier>{03d9d6f1-09fa-488e-ba79-c8eda34c02de}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{0d857c3a-06f4-466e-b58d-9c0b66a063b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Shapes">
+      <UniqueIdentifier>{e6733e91-aeca-4750-b672-8ed88f320c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Shapes">
+      <UniqueIdentifier>{0f846c63-ee90-46a6-a538-7c83961a025a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL.cpp">
@@ -57,6 +66,9 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>Source Files\vendor</Filter>
     </ClCompile>
+    <ClCompile Include="Square.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cube.h">
@@ -89,10 +101,18 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>Header Files\vendor</Filter>
     </ClInclude>
+    <ClInclude Include="Square.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Basic.shader">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\logo.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

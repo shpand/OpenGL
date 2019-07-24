@@ -11,6 +11,8 @@
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Renderer.h"
+#include "Texture.h"
+#include "Square.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -19,9 +21,9 @@ int main() {
     std::vector<GLfloat> points = cube->GetPoints();
     std::vector<unsigned int> indices = cube->GetIndicies();
 
-    Cube* cube2 = new Cube(-0.5, -0.5, 0, 0.5, 1, 0.5);
-    std::vector<GLfloat> points2 = cube2->GetPoints();
-    std::vector<unsigned int> indices2 = cube2->GetIndicies();
+    Square* square = new Square(-0.5, -0.5, 0.5, 1);
+    std::vector<GLfloat> points2 = square->GetPoints();
+    std::vector<unsigned int> indices2 = square->GetIndicies();
 
     /* start GL context and O/S window using the GLFW helper library */
     if (!glfwInit()) {
@@ -64,7 +66,7 @@ int main() {
     const VertexBuffer vb(&points[0], pointsSizeInBytes);
     VertexBufferLayout layout;
     layout.Push<float>(3);
-    //layout.Push<float>(2);//layout for texture coordinates
+    layout.Push<float>(2);//layout for texture coordinates
     VertexArray va;
     va.AddBuffer(vb, layout);
     //binding of indices must happen right after vb and va has been bound.
@@ -75,8 +77,8 @@ int main() {
     VertexBuffer vb2(&points2[0], pointsSizeInBytes2);
 
     VertexBufferLayout layout2;
-    layout2.Push<float>(3);
-    //layout.Push<float>(2);//layout for texture coordinates
+    layout2.Push<float>(2);
+    layout2.Push<float>(2);//layout for texture coordinates
     VertexArray va2;
     va2.AddBuffer(vb2, layout2);
 
@@ -91,6 +93,11 @@ int main() {
 
     Shader shader("Basic.shader");
     shader.Bind();
+
+    Texture texture("resources/textures/logo.png");
+    const int textureSlot = 0;
+    texture.Bind(textureSlot);
+    shader.SetUniform1i("u_Texture", textureSlot);
 
     /* this loop clears the drawing surface, then draws the geometry described
             by the VAO onto the drawing surface. we 'poll events' to see if the window

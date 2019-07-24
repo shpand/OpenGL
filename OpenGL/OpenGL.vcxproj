@@ -173,6 +173,7 @@
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="VertexArray.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="Square.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
     <ClInclude Include="VertexArray.h" />
@@ -193,6 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Basic.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\textures\logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,15 +2,16 @@
 #version 410 core
 
 layout(location = 0) in vec4 position;
+layout(location = 1) in vec2 texCoord;
 
 uniform mat4 u_MVP;
 
-out vec4 o_position;
+out vec2 v_TexCoord;
 
 void main()
 {
     gl_Position = u_MVP * position;
-    o_position = gl_Position;
+    v_TexCoord = texCoord;
 }
 
 
@@ -19,9 +20,12 @@ void main()
 
 layout(location = 0) out vec4 color;
 
-in vec4 o_position;
+in vec2 v_TexCoord;
+
+uniform sampler2D u_Texture; //location of our texture
 
 void main()
 {
-    color = o_position;
+    vec4 texColor = texture(u_Texture, v_TexCoord);
+    color = texColor;
 }
