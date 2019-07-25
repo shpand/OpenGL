@@ -4,7 +4,7 @@
 
 Cube::Cube(const float centerX, const float centerY, const float centerZ, const float width, const float height, const float depth)
 {
-    _points = CalculatePointsWithColors(centerX, centerY, centerZ, width, height, depth);
+    _points = CalculatePointsWithUV(centerX, centerY, centerZ, width, height, depth);
 }
 
 
@@ -87,48 +87,48 @@ std::vector<GLfloat> Cube::CalculatePointsWithUV(const float centerX, const floa
     points.push_back(centerZ - radiusZ);
     //uv
     points.push_back(0);
-    points.push_back(0);
+    points.push_back(0.66f);
     //point 3
     points.push_back(centerX + radiusX);
     points.push_back(centerY - radiusY);
     points.push_back(centerZ - radiusZ);
     //uv
-    points.push_back(1);
-    points.push_back(0);
+    points.push_back(0.33f);
+    points.push_back(0.66f);
     //point 4
     points.push_back(centerX + radiusX);
     points.push_back(centerY + radiusY);
     points.push_back(centerZ - radiusZ);
     //uv
-    points.push_back(1);
+    points.push_back(0.33f);
     points.push_back(1);
     //point 5
     points.push_back(centerX + radiusX);
     points.push_back(centerY + radiusY);
     points.push_back(centerZ + radiusZ);
     //uv
-    points.push_back(0);
+    points.push_back(0.66f);
     points.push_back(1);
     //point 6
     points.push_back(centerX + radiusX);
     points.push_back(centerY - radiusY);
     points.push_back(centerZ + radiusZ);
     //uv
-    points.push_back(0);
-    points.push_back(1);
+    points.push_back(0.66f);
+    points.push_back(0.66f);
     //point 7
     points.push_back(centerX - radiusX);
     points.push_back(centerY - radiusY);
     points.push_back(centerZ + radiusZ);
     //uv
-    points.push_back(0);
     points.push_back(1);
+    points.push_back(0.66f);
     //point 8
     points.push_back(centerX - radiusX);
     points.push_back(centerY + radiusY);
     points.push_back(centerZ + radiusZ);
     //uv
-    points.push_back(0);
+    points.push_back(1);
     points.push_back(1);
 
     return points;

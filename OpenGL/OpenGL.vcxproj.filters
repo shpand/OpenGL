@@ -117,5 +117,8 @@
     <Image Include="resources\textures\logo.png">
       <Filter>Resource Files\textures</Filter>
     </Image>
+    <Image Include="resources\textures\cube.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

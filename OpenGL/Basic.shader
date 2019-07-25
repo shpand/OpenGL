@@ -18,7 +18,7 @@ void main()
 #shader fragment
 #version 410 core
 
-layout(location = 0) out vec4 color;
+layout(location = 0) out vec3 color;
 
 in vec2 v_TexCoord;
 
@@ -26,6 +26,5 @@ uniform sampler2D u_Texture; //location of our texture
 
 void main()
 {
-    vec4 texColor = texture(u_Texture, v_TexCoord);
-    color = texColor;
+    color = texture(u_Texture, v_TexCoord).rgb;
 }

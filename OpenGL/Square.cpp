@@ -4,7 +4,7 @@
 
 Square::Square(const float centerX, const float centerY, const float width, const float height)
 {
-    _points = CalculatePointsWithColor(centerX, centerY, width, height);
+    _points = CalculatePointsWithUV(centerX, centerY, width, height);
 }
 
 

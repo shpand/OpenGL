@@ -198,6 +198,7 @@
     <None Include="color.shader" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="resources\textures\cube.png" />
     <Image Include="resources\textures\logo.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
