@@ -13,6 +13,7 @@
 #include "Renderer.h"
 #include "Texture.h"
 #include "Square.h"
+#include "FpsCounter.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -116,7 +117,10 @@ int main() {
     float offsetX = 0;
     float rotateDegree = 0;
     float mover = 0.0004;
+    FpsCounter fps(window);
     while (!glfwWindowShouldClose(window)) {
+        fps.Update();
+
         offsetX += mover;
         rotateDegree += mover;
         if(offsetX > 1)

@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Shapes">
       <UniqueIdentifier>{0f846c63-ee90-46a6-a538-7c83961a025a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{73c722b4-c70a-4ac3-9e9f-c2327e287e60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{a8f0e154-9049-401b-bded-a4c73a41dbdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL.cpp">
@@ -69,6 +75,9 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="FpsCounter.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asserter.h">
@@ -103,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="Cube.h">
       <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="FpsCounter.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
