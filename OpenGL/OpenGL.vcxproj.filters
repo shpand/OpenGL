@@ -109,6 +109,9 @@
     <None Include="Basic.shader">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="color.shader">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\logo.png">

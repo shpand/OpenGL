@@ -15,6 +15,9 @@ public:
 private:
     static std::vector<GLfloat> CalculatePoints(float centerX, float centerY, float centerZ, float width, float height, float depth);
     static std::vector<GLfloat> CalculatePointsWithUV(float centerX, float centerY, float centerZ, float width, float height, float depth);
+    static std::vector<GLfloat> CalculatePointsWithColors(float centerX, float centerY, float centerZ, float width,
+                                                   float height,
+                                                   float depth);
 
     std::vector<GLfloat> _points;
     std::vector<unsigned> _indicies

@@ -66,7 +66,7 @@ int main() {
     const VertexBuffer vb(&points[0], pointsSizeInBytes);
     VertexBufferLayout layout;
     layout.Push<float>(3);
-    layout.Push<float>(2);//layout for texture coordinates
+    layout.Push<float>(3);//layout for texture coordinates
     VertexArray va;
     va.AddBuffer(vb, layout);
     //binding of indices must happen right after vb and va has been bound.
@@ -78,7 +78,7 @@ int main() {
 
     VertexBufferLayout layout2;
     layout2.Push<float>(2);
-    layout2.Push<float>(2);//layout for texture coordinates
+    layout2.Push<float>(3);//layout for texture coordinates
     VertexArray va2;
     va2.AddBuffer(vb2, layout2);
 
@@ -91,13 +91,14 @@ int main() {
             shaders. we link this, which matches the outputs of the vertex shader to
     the inputs of the fragment shader, etc. and it is then ready to use */
 
-    Shader shader("Basic.shader");
+    //Shader shader("Basic.shader");
+    Shader shader("color.shader");
     shader.Bind();
 
     Texture texture("resources/textures/logo.png");
     const int textureSlot = 0;
     texture.Bind(textureSlot);
-    shader.SetUniform1i("u_Texture", textureSlot);
+    //shader.SetUniform1i("u_Texture", textureSlot);
 
     /* this loop clears the drawing surface, then draws the geometry described
             by the VAO onto the drawing surface. we 'poll events' to see if the window
