@@ -36,9 +36,6 @@
     <ClCompile Include="OpenGL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Asserter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -69,11 +66,11 @@
     <ClCompile Include="Square.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Source Files\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Asserter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -102,6 +99,9 @@
       <Filter>Header Files\vendor</Filter>
     </ClInclude>
     <ClInclude Include="Square.h">
+      <Filter>Header Files\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
   </ItemGroup>
