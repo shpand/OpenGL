@@ -37,6 +37,12 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{a8f0e154-9049-401b-bded-a4c73a41dbdc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ShapeRenderers">
+      <UniqueIdentifier>{6773dfb6-078b-4774-af54-60764915b288}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ShapeRenderers">
+      <UniqueIdentifier>{0bcad7be-a4f8-4434-8520-e67f72d02d06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGL.cpp">
@@ -78,6 +84,9 @@
     <ClCompile Include="FpsCounter.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="CubeRenderer.cpp">
+      <Filter>Source Files\ShapeRenderers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asserter.h">
@@ -115,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="FpsCounter.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeRenderer.h">
+      <Filter>Header Files\ShapeRenderers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

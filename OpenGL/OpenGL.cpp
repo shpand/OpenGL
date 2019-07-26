@@ -2,7 +2,6 @@
 #include <GLFW/glfw3.h>
 #include <cstdio>
 #include "Cube.h"
-#include "Asserter.h"
 #include "Shader.h"
 
 #include "vendor/glm/glm.hpp";
@@ -14,13 +13,10 @@
 #include "Texture.h"
 #include "Square.h"
 #include "FpsCounter.h"
+#include "CubeRenderer.h"
 
 int main() {
     GLFWwindow *window = NULL;
-
-    Cube* cube = new Cube(0.5, 0.5, 0, 0.5, 0.5, 0.5);
-    std::vector<GLfloat> points = cube->GetPoints();
-    std::vector<unsigned int> indices = cube->GetIndicies();
 
     Square* square = new Square(-0.5, -0.5, 0.5, 1);
     std::vector<GLfloat> points2 = square->GetPoints();
@@ -61,18 +57,6 @@ int main() {
     /* with LESS depth-testing interprets a smaller depth value as meaning "closer" */
     glDepthFunc(GL_LESS);
 
-    /* a vertex buffer object (VBO) is created here. this stores an array of
-    data on the graphics adapter's memory. in our case - the vertex points */
-    const int pointsSizeInBytes = points.size() * sizeof(GLfloat);
-    const VertexBuffer vb(&points[0], pointsSizeInBytes);
-    VertexBufferLayout layout;
-    layout.Push<float>(3);
-    layout.Push<float>(2);//layout for texture coordinates
-    VertexArray va;
-    va.AddBuffer(vb, layout);
-    //binding of indices must happen right after vb and va has been bound.
-    IndexBuffer ib(&indices[0], indices.size());
-
     //Prepare 2nd cube-----------------------------------------------------------
     const int pointsSizeInBytes2 = points2.size() * sizeof(GLfloat);
     VertexBuffer vb2(&points2[0], pointsSizeInBytes2);
@@ -109,6 +93,8 @@ int main() {
             surface. hence the 'swap' idea. in a single-buffering system we would see
             stuff being drawn one-after-the-other */
 
+    CubeRenderer cubeRenderer(glm::vec3(0.5, 0.5, 0), glm::vec3(0.5, 0.5, 0.5), &shader);
+
     Renderer renderer;
     glm::mat4 projection = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
     glm::mat4 viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-0.0f, 0, 0));//it's essentially a camera that we move
@@ -144,7 +130,7 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.2, 0.2, 0.2, 1);
 
-        renderer.Draw(va, ib, shader);
+        cubeRenderer.Draw();
         renderer.Draw(va2, ib2, shader);
 
         /* update other events like input handling */

@@ -169,6 +169,7 @@
   <ItemGroup>
     <ClCompile Include="Asserter.cpp" />
     <ClCompile Include="Cube.cpp" />
+    <ClCompile Include="CubeRenderer.cpp" />
     <ClCompile Include="FpsCounter.cpp" />
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="OpenGL.cpp" />
@@ -184,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="Asserter.h" />
     <ClInclude Include="Cube.h" />
+    <ClInclude Include="CubeRenderer.h" />
     <ClInclude Include="FpsCounter.h" />
     <ClInclude Include="IndexBuffer.h" />
     <ClInclude Include="Renderer.h" />
