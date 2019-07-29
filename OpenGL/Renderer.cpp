@@ -1,6 +1,6 @@
 #include "Renderer.h"
 #include <GL/glew.h>
-#include "Asserter.h"
+#include "utils/Asserter.h"
 #include "Shader.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"

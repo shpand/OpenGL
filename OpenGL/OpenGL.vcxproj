@@ -92,7 +92,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -111,7 +111,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/vendor/glm;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,7 +132,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,7 +155,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/vendor/glm;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,7 +167,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Asserter.cpp" />
+    <ClCompile Include="..\ThirdParty\stb_image\stb_image.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CubeRenderer.cpp" />
     <ClCompile Include="FpsCounter.cpp" />
@@ -177,13 +177,12 @@
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Square.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="VertexBuffer.cpp" />
     <ClCompile Include="VertexBufferLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asserter.h" />
+    <ClInclude Include="..\ThirdParty\stb_image\stb_image.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CubeRenderer.h" />
     <ClInclude Include="FpsCounter.h" />
@@ -192,7 +191,6 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Square.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="vendor\stb_image\stb_image.h" />
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="VertexBuffer.h" />
     <ClInclude Include="VertexBufferLayout.h" />
@@ -204,6 +202,11 @@
   <ItemGroup>
     <Image Include="resources\textures\cube.png" />
     <Image Include="resources\textures\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenGL.Common\OpenGL.Common.vcxproj">
+      <Project>{73bc0c9f-31e6-4823-a928-a3e6efdb5660}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

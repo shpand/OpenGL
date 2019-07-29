@@ -1,6 +1,6 @@
 #include "IndexBuffer.h"
 #include <GL/glew.h>
-#include "Asserter.h"
+#include "utils/Asserter.h"
 
 IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count) :count(count)
 {

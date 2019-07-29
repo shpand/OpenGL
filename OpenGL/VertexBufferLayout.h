@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <GL/glew.h>
-#include "Asserter.h"
+#include "utils/Asserter.h"
 
 struct VertexBufferElement
 {

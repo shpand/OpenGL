@@ -1,6 +1,6 @@
 #include "VertexBuffer.h"
 #include <GL/glew.h>
-#include "Asserter.h"
+#include "utils/Asserter.h"
 
 VertexBuffer::VertexBuffer(const void* data, const unsigned int dataSizeInBytes)
 {

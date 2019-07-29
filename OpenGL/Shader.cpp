@@ -7,7 +7,7 @@
 #include <sstream>
 
 #include <GL/glew.h>
-#include "Asserter.h"
+#include "utils/Asserter.h"
 
 Shader::Shader(const std::string & filepath) :filepath(filepath)
 {

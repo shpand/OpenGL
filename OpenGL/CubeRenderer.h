@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vendor/glm/vec3.hpp"
+#include "glm/vec3.hpp"
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Shader.h"

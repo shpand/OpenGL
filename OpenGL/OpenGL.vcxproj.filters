@@ -48,9 +48,6 @@
     <ClCompile Include="OpenGL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Asserter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -72,9 +69,6 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vendor\stb_image\stb_image.cpp">
-      <Filter>Source Files\vendor</Filter>
-    </ClCompile>
     <ClCompile Include="Square.cpp">
       <Filter>Source Files\Shapes</Filter>
     </ClCompile>
@@ -87,11 +81,11 @@
     <ClCompile Include="CubeRenderer.cpp">
       <Filter>Source Files\ShapeRenderers</Filter>
     </ClCompile>
+    <ClCompile Include="..\ThirdParty\stb_image\stb_image.cpp">
+      <Filter>Source Files\vendor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Asserter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -113,9 +107,6 @@
     <ClInclude Include="Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vendor\stb_image\stb_image.h">
-      <Filter>Header Files\vendor</Filter>
-    </ClInclude>
     <ClInclude Include="Square.h">
       <Filter>Header Files\Shapes</Filter>
     </ClInclude>
@@ -127,6 +118,9 @@
     </ClInclude>
     <ClInclude Include="CubeRenderer.h">
       <Filter>Header Files\ShapeRenderers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ThirdParty\stb_image\stb_image.h">
+      <Filter>Header Files\vendor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
