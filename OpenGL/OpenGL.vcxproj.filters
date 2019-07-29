@@ -63,6 +63,12 @@
     <ClCompile Include="..\ThirdParty\stb_image\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="samples\Sample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="samples\MovingSquareAndCubeSample.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Square.h">
@@ -78,6 +84,12 @@
       <Filter>Header Files\ShapeRenderers</Filter>
     </ClInclude>
     <ClInclude Include="..\ThirdParty\stb_image\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="samples\Sample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="samples\MovingSquareAndCubeSample.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

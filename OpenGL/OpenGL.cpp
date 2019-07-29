@@ -14,6 +14,8 @@
 #include "Square.h"
 #include "FpsCounter.h"
 #include "CubeRenderer.h"
+#include "samples/Sample.h"
+#include "samples/MovingSquareAndCubeSample.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -99,6 +101,10 @@ int main() {
     glm::mat4 projection = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
     glm::mat4 viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-0.0f, 0, 0));//it's essentially a camera that we move
 
+
+    samples::Sample* sample = new samples::MovingSquareAndCubeSample();
+    sample->OnUpdate(0.1f);
+    sample->OnRender();
 
     float offsetX = 0;
     float rotateDegree = 0;
