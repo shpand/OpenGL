@@ -1,9 +1,8 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <cstdio>
-#include "Cube.h"
 #include "Shader.h"
-#include "FpsCounter.h"
+#include "utils/FpsCounter.h"
 #include "samples/Sample.h"
 #include "samples/MovingSquareAndCubeSample.h"
 

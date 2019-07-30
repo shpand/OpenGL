@@ -1,6 +1,6 @@
 #include "CubeRenderer.h"
-#include "Cube.h"
 #include "Renderer.h"
+#include "../shapes/Cube.h"
 
 
 CubeRenderer::CubeRenderer(const glm::vec3 centerPosition, const glm::vec3 size, Shader* shader)

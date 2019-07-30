@@ -3,8 +3,8 @@
 #include <glm/mat4x4.hpp>
 #include "Shader.h"
 #include "Renderer.h"
-#include "../CubeRenderer.h"
 #include "Texture.h"
+#include "../renderers/CubeRenderer.h"
 
 namespace samples
 {

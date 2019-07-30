@@ -176,22 +176,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\stb_image\stb_image.cpp" />
-    <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="CubeRenderer.cpp" />
-    <ClCompile Include="FpsCounter.cpp" />
+    <ClCompile Include="shapes\Cube.cpp" />
+    <ClCompile Include="renderers\CubeRenderer.cpp" />
+    <ClCompile Include="utils\FpsCounter.cpp" />
     <ClCompile Include="samples\MovingSquareAndCubeSample.cpp" />
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="samples\Sample.cpp" />
-    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="shapes\Square.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ThirdParty\stb_image\stb_image.h" />
-    <ClInclude Include="Cube.h" />
-    <ClInclude Include="CubeRenderer.h" />
-    <ClInclude Include="FpsCounter.h" />
+    <ClInclude Include="shapes\Cube.h" />
+    <ClInclude Include="renderers\CubeRenderer.h" />
+    <ClInclude Include="utils\FpsCounter.h" />
     <ClInclude Include="samples\MovingSquareAndCubeSample.h" />
     <ClInclude Include="samples\Sample.h" />
-    <ClInclude Include="Square.h" />
+    <ClInclude Include="shapes\Square.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Basic.shader" />

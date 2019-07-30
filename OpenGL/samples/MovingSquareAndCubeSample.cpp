@@ -1,12 +1,11 @@
 #include "MovingSquareAndCubeSample.h"
-#include "utils/Asserter.h"
-#include "../Square.h"
+#include "../shapes/Square.h"
 #include "Renderer.h"
 #include "Texture.h"
-#include "../CubeRenderer.h"
 
 #include "glm/glm.hpp";
 #include "glm/gtc/matrix_transform.hpp";
+#include "../renderers/CubeRenderer.h"
 
 namespace samples
 {
