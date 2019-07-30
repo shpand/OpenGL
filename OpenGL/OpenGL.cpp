@@ -5,6 +5,7 @@
 #include "utils/FpsCounter.h"
 #include "samples/Sample.h"
 #include "samples/MovingSquareAndCubeSample.h"
+#include "samples/Sample3d.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -45,7 +46,8 @@ int main() {
     glDepthFunc(GL_LESS);
 
 
-    samples::Sample* sample = new samples::MovingSquareAndCubeSample();
+    //samples::Sample* sample = new samples::MovingSquareAndCubeSample();
+    samples::Sample* sample = new samples::Sample3d();
 
     FpsCounter fps(window);
     while (!glfwWindowShouldClose(window)) {

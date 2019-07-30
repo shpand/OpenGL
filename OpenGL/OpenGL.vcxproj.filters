@@ -69,6 +69,9 @@
     <ClCompile Include="utils\FpsCounter.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="samples\Sample3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\ThirdParty\stb_image\stb_image.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="utils\FpsCounter.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="samples\Sample3d.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
