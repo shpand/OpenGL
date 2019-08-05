@@ -12,7 +12,7 @@ namespace samples
     {
     }
 
-    void Sample::OnUpdate(float deltaTime)
+    void Sample::OnUpdate(float deltaTime, GLFWwindow* window)
     {
     }
 

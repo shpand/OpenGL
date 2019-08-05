@@ -26,8 +26,6 @@ namespace samples
 
         projection = glm::ortho<float>(0.f, 1920.0f, 0.f, 1080.f, -1000.0f, 1000.0f);
         viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-0.0f, 0, 0)); //it's essentially a camera that we move
-
-        mover = 0.4;
     }
 
 
@@ -35,23 +33,24 @@ namespace samples
     {
     }
 
-    void Sample3d::OnUpdate(float deltaTime)
+    void Sample3d::OnUpdate(float deltaTime, GLFWwindow* window)
     {
-        offsetX += mover;
-        rotateDegree += mover;
-        if (offsetX > 300)
-        {
-            offsetX = 300;
-            mover = -mover;
+        if (glfwGetKey(window, GLFW_KEY_A)) {
+            viewMatrix = glm::translate(viewMatrix, glm::vec3(-1.0f, 0.f, 0));
         }
-        else if (offsetX < -300)
-        {
-            offsetX = -300;
-            mover = -mover;
+        if (glfwGetKey(window, GLFW_KEY_D)) {
+            viewMatrix = glm::translate(viewMatrix, glm::vec3(1.0f, 0.f, 0));
         }
-        glm::vec3 translationX(offsetX, 0, 0);
+        if (glfwGetKey(window, GLFW_KEY_W)) {
+            viewMatrix = glm::translate(viewMatrix, glm::vec3(0.0f, 1.f, 0));
+        }
+        if (glfwGetKey(window, GLFW_KEY_S)) {
+            viewMatrix = glm::translate(viewMatrix, glm::vec3(0.0f, -1.f, 0));
+        }
+
+        glm::vec3 translationX(0, 0, 0);
         glm::mat4 model = glm::translate(glm::mat4(1.0f), translationX);//objects transformation
-        model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));
+        //model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));
         glm::mat4 modelViewProjection = projection * viewMatrix * model;
         shader->SetUniformMat4f("u_MVP", modelViewProjection);
     }

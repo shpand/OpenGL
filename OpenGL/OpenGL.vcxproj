@@ -101,6 +101,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,6 +121,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +143,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,6 +167,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,7 +179,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\ThirdParty\stb_image\stb_image.cpp" />
     <ClCompile Include="samples\Sample3d.cpp" />
     <ClCompile Include="shapes\Cube.cpp" />
     <ClCompile Include="renderers\CubeRenderer.cpp" />
@@ -186,7 +189,6 @@
     <ClCompile Include="shapes\Square.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\ThirdParty\stb_image\stb_image.h" />
     <ClInclude Include="samples\Sample3d.h" />
     <ClInclude Include="shapes\Cube.h" />
     <ClInclude Include="renderers\CubeRenderer.h" />

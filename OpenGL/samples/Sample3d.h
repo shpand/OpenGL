@@ -12,16 +12,13 @@ namespace samples
     public:
         Sample3d();
         ~Sample3d();
-        void OnUpdate(float deltaTime) override;
+        void OnUpdate(float deltaTime, GLFWwindow* window) override;
         void OnRender() override;
 
     private:
         std::vector<CubeRenderer>* GenerateCubes(const int n);
         static glm::vec3 GenerateRandomPosition();
 
-        float offsetX = 0;
-        float rotateDegree = 0;
-        float mover;
         glm::mat4 projection;
         glm::mat4 viewMatrix;
 

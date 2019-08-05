@@ -1,10 +1,8 @@
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
+
 #include <cstdio>
 #include "Shader.h"
 #include "utils/FpsCounter.h"
-#include "samples/Sample.h"
-#include "samples/MovingSquareAndCubeSample.h"
 #include "samples/Sample3d.h"
 
 int main() {
@@ -53,7 +51,7 @@ int main() {
     while (!glfwWindowShouldClose(window)) {
         fps.Update();
 
-        sample->OnUpdate(0.1f);
+        sample->OnUpdate(0.1f, window);
         sample->OnRender();
         /* update other events like input handling */
         glfwPollEvents();

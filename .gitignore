@@ -6,4 +6,5 @@
 *.log
 *.tlog
 *.obj
+*.i
 

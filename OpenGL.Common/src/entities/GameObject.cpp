@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-namespace  OpenGLEngine
+namespace  open_gl_engine
 {
     GameObject::GameObject()
     {

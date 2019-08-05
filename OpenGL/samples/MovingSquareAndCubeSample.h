@@ -13,7 +13,7 @@ namespace samples
     public:
         MovingSquareAndCubeSample();
         ~MovingSquareAndCubeSample();
-        void OnUpdate(float deltaTime) override;
+        void OnUpdate(float deltaTime, GLFWwindow* window) override;
         void OnRender() override;
 
     private:

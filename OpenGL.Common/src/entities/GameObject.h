@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/vec3.hpp>
 
-namespace  OpenGLEngine
+namespace  open_gl_engine
 {
     class GameObject
     {

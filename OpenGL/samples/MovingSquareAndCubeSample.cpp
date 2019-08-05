@@ -67,7 +67,7 @@ namespace samples
         //TODO: free resources
     }
 
-    void MovingSquareAndCubeSample::OnUpdate(float deltaTime)
+    void MovingSquareAndCubeSample::OnUpdate(float deltaTime, GLFWwindow* window)
     {
         offsetX += mover;
         rotateDegree += mover;
