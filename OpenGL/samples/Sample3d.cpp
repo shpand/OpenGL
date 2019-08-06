@@ -1,6 +1,7 @@
 #include "Sample3d.h"
 #include "glm/glm.hpp";
 #include "glm/gtc/matrix_transform.hpp";
+#include "cameras/OrthographicCamera.h"
 
 namespace samples
 {
@@ -23,9 +24,7 @@ namespace samples
 
         cubeRenderers = Sample3d::GenerateCubes(30);
 
-
-        projection = glm::ortho<float>(0.f, 1920.0f, 0.f, 1080.f, -1000.0f, 1000.0f);
-        viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-0.0f, 0, 0)); //it's essentially a camera that we move
+        camera = new open_gl_engine::cameras::OrthographicCamera(0.f, 1920.0f, 0.f, 1080.f, -1000.0f, 1000.0f);
     }
 
 
@@ -36,22 +35,28 @@ namespace samples
     void Sample3d::OnUpdate(float deltaTime, GLFWwindow* window)
     {
         if (glfwGetKey(window, GLFW_KEY_A)) {
-            viewMatrix = glm::translate(viewMatrix, glm::vec3(-1.0f, 0.f, 0));
+            glm::vec3 oldPos = camera->GetPosition();
+            glm::vec3 newPos = oldPos + glm::vec3(-1.0f, 0.f, 0);
+            camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_D)) {
-            viewMatrix = glm::translate(viewMatrix, glm::vec3(1.0f, 0.f, 0));
+            glm::vec3 oldPos = camera->GetPosition();
+            glm::vec3 newPos = oldPos + glm::vec3(1.0f, 0.f, 0);
+            camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_W)) {
-            viewMatrix = glm::translate(viewMatrix, glm::vec3(0.0f, 1.f, 0));
+            glm::vec3 oldPos = camera->GetPosition();
+            glm::vec3 newPos = oldPos + glm::vec3(0.0f, 1.f, 0);
+            camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_S)) {
-            viewMatrix = glm::translate(viewMatrix, glm::vec3(0.0f, -1.f, 0));
+            glm::vec3 oldPos = camera->GetPosition();
+            glm::vec3 newPos = oldPos + glm::vec3(0.0f, -1.f, 0);
+            camera->SetPosition(newPos);
         }
 
-        glm::vec3 translationX(0, 0, 0);
-        glm::mat4 model = glm::translate(glm::mat4(1.0f), translationX);//objects transformation
         //model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));
-        glm::mat4 modelViewProjection = projection * viewMatrix * model;
+        glm::mat4 modelViewProjection = camera->GetViewProjectionMatrix() * glm::mat4(1.0f);
         shader->SetUniformMat4f("u_MVP", modelViewProjection);
     }
 

@@ -4,6 +4,7 @@
 #include "../renderers/CubeRenderer.h"
 #include "Renderer.h"
 #include "Texture.h"
+#include "cameras/Camera.h"
 
 namespace samples
 {
@@ -19,8 +20,7 @@ namespace samples
         std::vector<CubeRenderer>* GenerateCubes(const int n);
         static glm::vec3 GenerateRandomPosition();
 
-        glm::mat4 projection;
-        glm::mat4 viewMatrix;
+        open_gl_engine::cameras::Camera* camera;
 
         Texture* texture;
 
