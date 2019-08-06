@@ -10,7 +10,7 @@ namespace samples
         shader.reset(new Shader("Basic.shader"));
         shader->Bind();
         //TODO:
-        //1. add camera
+        //1. add persp camera and x/y rotation. Also fix z-rotation
         //2. and key handlers.
         //3. Fix model rotation
         //4. Add GameObject that will have its own model matrix with scale, rotation and pos
@@ -53,6 +53,16 @@ namespace samples
             glm::vec3 oldPos = camera->GetPosition();
             glm::vec3 newPos = oldPos + glm::vec3(0.0f, -1.f, 0);
             camera->SetPosition(newPos);
+        }
+        if (glfwGetKey(window, GLFW_KEY_Z)) {
+            float oldRot = camera->GetRotation();
+            oldRot--;
+            camera->SetRotation(oldRot);
+        }
+        if (glfwGetKey(window, GLFW_KEY_X)) {
+            float oldRot = camera->GetRotation();
+            oldRot++;
+            camera->SetRotation(oldRot);
         }
 
         //model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));
