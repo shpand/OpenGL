@@ -34,35 +34,55 @@ namespace samples
 
     void Sample3d::OnUpdate(float deltaTime, GLFWwindow* window)
     {
+        static const float moveSpeed = 100.f;
+        static const float rotateSpeed = 50.f;
+        const glm::vec3 cameraPos = camera->GetPosition();
+
         if (glfwGetKey(window, GLFW_KEY_A)) {
-            glm::vec3 oldPos = camera->GetPosition();
-            glm::vec3 newPos = oldPos + glm::vec3(-1.0f, 0.f, 0);
+            glm::vec3 newPos = cameraPos + glm::vec3(-moveSpeed * deltaTime, 0.f, 0);
             camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_D)) {
-            glm::vec3 oldPos = camera->GetPosition();
-            glm::vec3 newPos = oldPos + glm::vec3(1.0f, 0.f, 0);
+            glm::vec3 newPos = cameraPos + glm::vec3(moveSpeed * deltaTime, 0.f, 0);
             camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_W)) {
-            glm::vec3 oldPos = camera->GetPosition();
-            glm::vec3 newPos = oldPos + glm::vec3(0.0f, 1.f, 0);
+            glm::vec3 newPos = cameraPos + glm::vec3(0.0f, moveSpeed * deltaTime, 0);
             camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_S)) {
-            glm::vec3 oldPos = camera->GetPosition();
-            glm::vec3 newPos = oldPos + glm::vec3(0.0f, -1.f, 0);
+            glm::vec3 newPos = cameraPos + glm::vec3(0.0f, -moveSpeed * deltaTime, 0);
             camera->SetPosition(newPos);
         }
         if (glfwGetKey(window, GLFW_KEY_Z)) {
-            float oldRot = camera->GetRotation();
-            oldRot--;
-            camera->SetRotation(oldRot);
+            float rotation = camera->GetRotationX();
+            rotation -= rotateSpeed * deltaTime;
+            camera->SetRotationX(rotation);
         }
         if (glfwGetKey(window, GLFW_KEY_X)) {
-            float oldRot = camera->GetRotation();
-            oldRot++;
-            camera->SetRotation(oldRot);
+            float rotation = camera->GetRotationX();
+            rotation += rotateSpeed * deltaTime;
+            camera->SetRotationX(rotation);
+        }
+        if (glfwGetKey(window, GLFW_KEY_Q)) {
+            float rotation = camera->GetRotationZ();
+            rotation -= rotateSpeed * deltaTime;
+            camera->SetRotationZ(rotation);
+        }
+        if (glfwGetKey(window, GLFW_KEY_E)) {
+            float rotation = camera->GetRotationZ();
+            rotation += rotateSpeed * deltaTime;
+            camera->SetRotationZ(rotation);
+        }
+        if (glfwGetKey(window, GLFW_KEY_C)) {
+            float rotation = camera->GetRotationY();
+            rotation -= rotateSpeed * deltaTime;
+            camera->SetRotationY(rotation);
+        }
+        if (glfwGetKey(window, GLFW_KEY_V)) {
+            float rotation = camera->GetRotationY();
+            rotation += rotateSpeed * deltaTime;
+            camera->SetRotationY(rotation);
         }
 
         //model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));

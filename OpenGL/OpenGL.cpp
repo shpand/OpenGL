@@ -48,10 +48,15 @@ int main() {
     samples::Sample* sample = new samples::Sample3d();
 
     FpsCounter fps(window);
+    double lastTime = 0;
     while (!glfwWindowShouldClose(window)) {
+        const double time = glfwGetTime();
+        const double deltaTime = time - lastTime;
+        lastTime = time;
+
         fps.Update();
 
-        sample->OnUpdate(0.1f, window);
+        sample->OnUpdate(deltaTime, window);
         sample->OnRender();
         /* update other events like input handling */
         glfwPollEvents();
