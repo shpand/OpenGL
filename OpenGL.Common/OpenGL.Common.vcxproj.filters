@@ -51,6 +51,9 @@
     <ClInclude Include="src\cameras\OrthographicCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\cameras\PerspectiveCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\utils\Asserter.cpp">
@@ -87,6 +90,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\cameras\OrthographicCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cameras\PerspectiveCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
