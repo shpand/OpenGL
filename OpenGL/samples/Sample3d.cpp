@@ -2,6 +2,7 @@
 #include "glm/glm.hpp";
 #include "glm/gtc/matrix_transform.hpp";
 #include "cameras/OrthographicCamera.h"
+#include "cameras/PerspectiveCamera.h"
 
 namespace samples
 {
@@ -10,9 +11,7 @@ namespace samples
         shader.reset(new Shader("Basic.shader"));
         shader->Bind();
         //TODO:
-        //1. add persp camera and x/y rotation. Also fix z-rotation
-        //2. and key handlers.
-        //3. Fix model rotation
+        //1. Implement Camera Debug info (rotation degrees, current pos etc.)
         //4. Add GameObject that will have its own model matrix with scale, rotation and pos
         //5. Implement camera rotation AROUND object
         //6. Implement object rotation AROUND itself, not around world/view space
@@ -24,7 +23,8 @@ namespace samples
 
         cubeRenderers = Sample3d::GenerateCubes(30);
 
-        camera = new open_gl_engine::cameras::OrthographicCamera(0.f, 1920.0f, 0.f, 1080.f, -1000.0f, 1000.0f);
+        //camera = new open_gl_engine::cameras::OrthographicCamera(0.f, 1920.0f, 0.f, 1080.f, -1000.0f, 1000.0f);
+        camera = new open_gl_engine::cameras::PerspectiveCamera(1920.0f, 1080.f, 45.0f, 0.1f, 10000.0f);
     }
 
 
@@ -38,30 +38,38 @@ namespace samples
         static const float rotateSpeed = 50.f;
         const glm::vec3 cameraPos = camera->GetPosition();
 
-        if (glfwGetKey(window, GLFW_KEY_A)) {
+        if (glfwGetKey(window, GLFW_KEY_LEFT)) {
             glm::vec3 newPos = cameraPos + glm::vec3(-moveSpeed * deltaTime, 0.f, 0);
             camera->SetPosition(newPos);
         }
-        if (glfwGetKey(window, GLFW_KEY_D)) {
+        if (glfwGetKey(window, GLFW_KEY_RIGHT)) {
             glm::vec3 newPos = cameraPos + glm::vec3(moveSpeed * deltaTime, 0.f, 0);
             camera->SetPosition(newPos);
         }
-        if (glfwGetKey(window, GLFW_KEY_W)) {
+        if (glfwGetKey(window, GLFW_KEY_PAGE_UP)) {
             glm::vec3 newPos = cameraPos + glm::vec3(0.0f, moveSpeed * deltaTime, 0);
             camera->SetPosition(newPos);
         }
-        if (glfwGetKey(window, GLFW_KEY_S)) {
+        if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN)) {
             glm::vec3 newPos = cameraPos + glm::vec3(0.0f, -moveSpeed * deltaTime, 0);
             camera->SetPosition(newPos);
         }
-        if (glfwGetKey(window, GLFW_KEY_Z)) {
-            float rotation = camera->GetRotationX();
-            rotation -= rotateSpeed * deltaTime;
-            camera->SetRotationX(rotation);
+        if (glfwGetKey(window, GLFW_KEY_UP)) {
+            glm::vec3 newPos = cameraPos + glm::vec3(0.0f, 0, moveSpeed * deltaTime);
+            camera->SetPosition(newPos);
         }
-        if (glfwGetKey(window, GLFW_KEY_X)) {
+        if (glfwGetKey(window, GLFW_KEY_DOWN)) {
+            glm::vec3 newPos = cameraPos + glm::vec3(0.0f, 0, -moveSpeed * deltaTime);
+            camera->SetPosition(newPos);
+        }
+        if (glfwGetKey(window, GLFW_KEY_W)) {
             float rotation = camera->GetRotationX();
             rotation += rotateSpeed * deltaTime;
+            camera->SetRotationX(rotation);
+        }
+        if (glfwGetKey(window, GLFW_KEY_S)) {
+            float rotation = camera->GetRotationX();
+            rotation -= rotateSpeed * deltaTime;
             camera->SetRotationX(rotation);
         }
         if (glfwGetKey(window, GLFW_KEY_Q)) {
@@ -74,12 +82,12 @@ namespace samples
             rotation += rotateSpeed * deltaTime;
             camera->SetRotationZ(rotation);
         }
-        if (glfwGetKey(window, GLFW_KEY_C)) {
+        if (glfwGetKey(window, GLFW_KEY_A)) {
             float rotation = camera->GetRotationY();
             rotation -= rotateSpeed * deltaTime;
             camera->SetRotationY(rotation);
         }
-        if (glfwGetKey(window, GLFW_KEY_V)) {
+        if (glfwGetKey(window, GLFW_KEY_D)) {
             float rotation = camera->GetRotationY();
             rotation += rotateSpeed * deltaTime;
             camera->SetRotationY(rotation);
@@ -120,7 +128,8 @@ namespace samples
     {
         int x = rand() % 1920;
         int y = rand() % 1080;
-        float z = (((rand() % 100) - 50.f) / 100.f) * 2.f;
+        //float z = (((rand() % 100) - 50.f) / 100.f) * 2.f;
+        float z = rand() % 1000;
 
         return glm::vec3(x, y, z);
     }
