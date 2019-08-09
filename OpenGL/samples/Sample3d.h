@@ -18,6 +18,7 @@ namespace samples
 
     private:
         std::vector<CubeRenderer>* GenerateCubes(const int n);
+        void UpdateCamera(float deltaTime, GLFWwindow* window);
         static glm::vec3 GenerateRandomPosition();
 
         open_gl_engine::cameras::Camera* camera;

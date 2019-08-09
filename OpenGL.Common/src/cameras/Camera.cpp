@@ -1,6 +1,7 @@
 #include "Camera.h"
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <cstdio>
 
 namespace open_gl_engine
 {
@@ -25,6 +26,9 @@ namespace open_gl_engine
 
             m_ViewMatrix = glm::inverse(transform);
             m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
+
+            printf("Camera position: %f, %f, %f\n", m_Position.x, m_Position.y, m_Position.z);
+            printf("Camera rotation: %f, %f, %f\n", m_RotationX, m_RotationY, m_RotationZ);
         }
     }
 }

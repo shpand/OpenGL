@@ -12,6 +12,7 @@ namespace samples
         shader->Bind();
         //TODO:
         //1. Implement Camera Debug info (rotation degrees, current pos etc.)
+        //2. Implement coordinate system graphically
         //4. Add GameObject that will have its own model matrix with scale, rotation and pos
         //5. Implement camera rotation AROUND object
         //6. Implement object rotation AROUND itself, not around world/view space
@@ -33,6 +34,15 @@ namespace samples
     }
 
     void Sample3d::OnUpdate(float deltaTime, GLFWwindow* window)
+    {
+        UpdateCamera(deltaTime, window);
+
+        //model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));
+        glm::mat4 modelViewProjection = camera->GetViewProjectionMatrix() * glm::mat4(1.0f);
+        shader->SetUniformMat4f("u_MVP", modelViewProjection);
+    }
+
+    void Sample3d::UpdateCamera(float deltaTime, GLFWwindow* window)
     {
         static const float moveSpeed = 100.f;
         static const float rotateSpeed = 50.f;
@@ -92,10 +102,6 @@ namespace samples
             rotation += rotateSpeed * deltaTime;
             camera->SetRotationY(rotation);
         }
-
-        //model = glm::rotate(model, glm::radians((float)((int)rotateDegree % 360)), glm::vec3(1.f, 1.f, 1.f));
-        glm::mat4 modelViewProjection = camera->GetViewProjectionMatrix() * glm::mat4(1.0f);
-        shader->SetUniformMat4f("u_MVP", modelViewProjection);
     }
 
     void Sample3d::OnRender()
