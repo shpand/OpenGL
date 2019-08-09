@@ -15,6 +15,9 @@ namespace open_gl_engine
                 glm::vec3(0, 1, 0)  // Head is up (set to 0,-1,0 to look upside-down)
             );
 
+            SetPosition(m_ViewMatrix[3]);
+            //How to extract rotation?
+
             m_ViewProjectionMatrix = m_ProjectionMatrix * m_ViewMatrix;
         }
     }
