@@ -11,8 +11,8 @@ namespace samples
         shader.reset(new Shader("Basic.shader"));
         shader->Bind();
         //TODO:
-        //1. Implement Camera Debug info (rotation degrees, current pos etc.)
         //2. Implement coordinate system graphically
+        //3. Add Raycast
         //4. Add GameObject that will have its own model matrix with scale, rotation and pos
         //5. Implement camera rotation AROUND object
         //6. Implement object rotation AROUND itself, not around world/view space
@@ -22,10 +22,12 @@ namespace samples
         texture->Bind(textureSlot);
         shader->SetUniform1i("u_Texture", textureSlot);
 
-        cubeRenderers = Sample3d::GenerateCubes(30);
+        cubeRenderers = GenerateCubes(1);
 
         //camera = new open_gl_engine::cameras::OrthographicCamera(0.f, 1920.0f, 0.f, 1080.f, -1000.0f, 1000.0f);
         camera = new open_gl_engine::cameras::PerspectiveCamera(1920.0f, 1080.f, 45.0f, 0.1f, 10000.0f);
+        camera->SetPosition({ 0, 0, 2000 });
+        //camera->SetRotationY(180);
     }
 
 
@@ -123,8 +125,16 @@ namespace samples
 
         for (auto i = 0; i < n; i++)
         {
-            CubeRenderer cubeRenderer(GenerateRandomPosition(), glm::vec3(30, 30, 30), shader.get());
-            cubeRenderers->push_back(cubeRenderer);
+            if (i == 0)
+            {
+                CubeRenderer cubeRenderer(glm::vec3(0, 0, 0), glm::vec3(60, 60, 60), shader.get());
+                cubeRenderers->push_back(cubeRenderer);
+            }
+            else
+            {
+                CubeRenderer cubeRenderer(GenerateRandomPosition(), glm::vec3(30, 30, 30), shader.get());
+                cubeRenderers->push_back(cubeRenderer);
+            }
         }
 
         return cubeRenderers;
