@@ -187,6 +187,7 @@
     <ClCompile Include="OpenGL.cpp" />
     <ClCompile Include="samples\Sample.cpp" />
     <ClCompile Include="shapes\Square.cpp" />
+    <ClCompile Include="samples\WorldEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="samples\Sample3d.h" />
@@ -196,6 +197,7 @@
     <ClInclude Include="samples\MovingSquareAndCubeSample.h" />
     <ClInclude Include="samples\Sample.h" />
     <ClInclude Include="shapes\Square.h" />
+    <ClInclude Include="samples\WorldEditor.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Basic.shader" />

@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include "utils/FpsCounter.h"
 #include "samples/Sample3d.h"
+#include "samples/WorldEditor.h"
 
 int main() {
     GLFWwindow *window = NULL;
@@ -45,7 +46,8 @@ int main() {
 
 
     //samples::Sample* sample = new samples::MovingSquareAndCubeSample();
-    samples::Sample* sample = new samples::Sample3d();
+    //samples::Sample* sample = new samples::Sample3d();
+    samples::Sample* sample = new samples::WorldEditor();
 
     FpsCounter fps(window);
     double lastTime = 0;

@@ -69,6 +69,9 @@
     <ClCompile Include="samples\Sample3d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="samples\WorldEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="samples\Sample.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="samples\Sample3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="samples\WorldEditor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
