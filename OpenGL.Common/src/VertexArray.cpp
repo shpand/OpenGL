@@ -34,11 +34,11 @@ void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& la
     /* this VBO may be already bound, but it's a good habit to explicitly specify which
     VBO's data the following vertex attribute pointer refers to */
     vb.Bind();
-    const auto& elements = layout.GetElements();
+    const std::vector<VertexBufferElement> elements = layout.GetElements();
     unsigned int offset = 0;
     for (unsigned int i = 0; i < elements.size(); i++)
     {
-        const auto& element = elements[i];
+        const VertexBufferElement element = elements[i];
         GLCall(glEnableVertexAttribArray(i));
         GLCall(glVertexAttribPointer(
             i, // attribute. No particular reason for 'i', but must match the layout in the shader.

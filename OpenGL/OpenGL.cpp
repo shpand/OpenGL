@@ -1,5 +1,7 @@
 #include <GL/glew.h>
 
+#include "vld.h" //Don't remove!! Its Visual Leak Debugger to search memory leaks
+
 #include <cstdio>
 #include "Shader.h"
 #include "utils/FpsCounter.h"
@@ -65,6 +67,8 @@ int main() {
         /* put the stuff we've been drawing onto the display */
         glfwSwapBuffers(window);
     }
+
+    delete sample;
 
     /* close GL context and any other GLFW resources */
     glfwTerminate();
