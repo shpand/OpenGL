@@ -190,6 +190,7 @@
     <ClCompile Include="samples\WorldEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constants\ScreenParams.h" />
     <ClInclude Include="samples\Sample3d.h" />
     <ClInclude Include="shapes\Cube.h" />
     <ClInclude Include="renderers\CubeRenderer.h" />

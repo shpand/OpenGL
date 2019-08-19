@@ -1,6 +1,7 @@
 #pragma once
 #include "Sample.h"
 #include "Shader.h"
+#include "cameras/Camera.h"
 
 namespace samples
 {
@@ -16,6 +17,7 @@ namespace samples
         void UpdateCamera(float deltaTime, GLFWwindow* window);
 
         std::unique_ptr<Shader> shader;
+        std::unique_ptr<open_gl_engine::cameras::Camera> camera;
     };
 }
 
