@@ -51,14 +51,14 @@ namespace samples
         //TODO: reduce draw calls
         for(int x = -50; x < 51; x++)
         {
-            float z = x * 10;
-            std::vector<GLfloat> points =
+            float zCoord = x * 10;
+            std::vector<GLfloat> horizontalLinePoints =
             {
-                -static_cast<float>(screen_params::Width) / 2, 0, z,
-                static_cast<float>(screen_params::Width) / 2, 0, z
+                -static_cast<float>(screen_params::Width) / 2, 0, zCoord,
+                static_cast<float>(screen_params::Width) / 2, 0, zCoord
             };
 
-            VertexBuffer vb = VertexBuffer(&points[0], points.size() * sizeof(float));
+            VertexBuffer vb = VertexBuffer(&horizontalLinePoints[0], horizontalLinePoints.size() * sizeof(float));
 
             VertexBufferLayout layout;
             layout.Push<float>(3);
@@ -66,7 +66,24 @@ namespace samples
             VertexArray va = VertexArray();
             va.AddBuffer(vb, layout);
 
-            glDrawArrays(GL_LINES, 0, points.size());
+            glDrawArrays(GL_LINES, 0, horizontalLinePoints.size());
+
+            float xCoord = x * 10;
+            std::vector<GLfloat> verticalLinePoints =
+            {
+                xCoord, 0, -static_cast<float>(screen_params::Height) / 2,
+                xCoord, 0, static_cast<float>(screen_params::Height) / 2
+            };
+
+            VertexBuffer vb2 = VertexBuffer(&verticalLinePoints[0], verticalLinePoints.size() * sizeof(float));
+
+            VertexBufferLayout layout2;
+            layout2.Push<float>(3);
+
+            VertexArray va2 = VertexArray();
+            va2.AddBuffer(vb2, layout2);
+
+            glDrawArrays(GL_LINES, 0, verticalLinePoints.size());
         }
     }
 }
