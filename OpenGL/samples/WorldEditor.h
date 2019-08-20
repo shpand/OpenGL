@@ -17,7 +17,7 @@ namespace samples
         void UpdateCamera(float deltaTime, GLFWwindow* window);
 
         std::unique_ptr<Shader> shader;
-        std::unique_ptr<open_gl_engine::cameras::Camera> camera;
+        std::shared_ptr<open_gl_engine::cameras::Camera> camera;
     };
 }
 

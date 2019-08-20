@@ -182,6 +182,7 @@
     <ClCompile Include="samples\Sample3d.cpp" />
     <ClCompile Include="shapes\Cube.cpp" />
     <ClCompile Include="renderers\CubeRenderer.cpp" />
+    <ClCompile Include="utils\CameraHandler.cpp" />
     <ClCompile Include="utils\FpsCounter.cpp" />
     <ClCompile Include="samples\MovingSquareAndCubeSample.cpp" />
     <ClCompile Include="OpenGL.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="samples\Sample3d.h" />
     <ClInclude Include="shapes\Cube.h" />
     <ClInclude Include="renderers\CubeRenderer.h" />
+    <ClInclude Include="utils\CameraHandler.h" />
     <ClInclude Include="utils\FpsCounter.h" />
     <ClInclude Include="samples\MovingSquareAndCubeSample.h" />
     <ClInclude Include="samples\Sample.h" />

@@ -2,6 +2,7 @@
 #include "VertexArray.h"
 #include "cameras/PerspectiveCamera.h"
 #include "../constants/ScreenParams.h"
+#include "../utils/CameraHandler.h"
 
 namespace samples
 {
@@ -24,6 +25,8 @@ namespace samples
 
     void samples::WorldEditor::OnUpdate(float deltaTime, GLFWwindow* window)
     {
+        UpdateCamera(deltaTime, window);
+
         glm::mat4 modelViewProjection = camera->GetViewProjectionMatrix() * glm::mat4(1.0f);
         shader->SetUniformMat4f("u_MVP", modelViewProjection);
     }
@@ -56,5 +59,7 @@ namespace samples
 
     void samples::WorldEditor::UpdateCamera(float deltaTime, GLFWwindow* window)
     {
+        utils::CameraHandler cameraHandler;
+        cameraHandler.UpdatePosition(deltaTime, window, camera.get());
     }
 }
