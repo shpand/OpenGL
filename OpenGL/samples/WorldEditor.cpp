@@ -37,29 +37,36 @@ namespace samples
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.4f, 0.4f, 0.4f, 0);
 
-        std::vector<GLfloat> points =
-        {
-            -static_cast<float>(screen_params::Width)/2, 0, 0,
-            static_cast<float>(screen_params::Width) / 2, 0, 0
-        };
-
-        VertexBuffer vb = VertexBuffer(&points[0], points.size() * sizeof(float));
-
-        VertexBufferLayout layout;
-        layout.Push<float>(3);
-
-        VertexArray va = VertexArray();
-        va.AddBuffer(vb, layout);
-
-        glDrawArrays(GL_LINE_STRIP, 0, points.size());
-
-        //delete vb;
-        //delete va;
+        DrawWorldGrid();
     }
 
     void samples::WorldEditor::UpdateCamera(float deltaTime, GLFWwindow* window)
     {
         utils::CameraHandler cameraHandler;
         cameraHandler.UpdatePosition(deltaTime, window, camera.get());
+    }
+
+    void WorldEditor::DrawWorldGrid()
+    {
+        //TODO: reduce draw calls
+        for(int x = -50; x < 51; x++)
+        {
+            float z = x * 10;
+            std::vector<GLfloat> points =
+            {
+                -static_cast<float>(screen_params::Width) / 2, 0, z,
+                static_cast<float>(screen_params::Width) / 2, 0, z
+            };
+
+            VertexBuffer vb = VertexBuffer(&points[0], points.size() * sizeof(float));
+
+            VertexBufferLayout layout;
+            layout.Push<float>(3);
+
+            VertexArray va = VertexArray();
+            va.AddBuffer(vb, layout);
+
+            glDrawArrays(GL_LINES, 0, points.size());
+        }
     }
 }
