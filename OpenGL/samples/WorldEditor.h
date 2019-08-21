@@ -15,9 +15,11 @@ namespace samples
 
     private:
         void UpdateCamera(float deltaTime, GLFWwindow* window);
+        void DrawSkyGradient();
         void DrawWorldGrid();
 
         std::unique_ptr<Shader> shader;
+        std::unique_ptr<Shader> skyShader;
         std::shared_ptr<open_gl_engine::cameras::Camera> camera;
     };
 }

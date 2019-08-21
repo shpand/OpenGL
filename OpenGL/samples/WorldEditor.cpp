@@ -13,6 +13,8 @@ namespace samples
         shader->Bind();
         shader->SetUniformMat4f("u_MVP", glm::mat4(1.f));
 
+        skyShader.reset(new Shader("../OpenGL.Common/src/shaders/SkyGradient.shader"));
+
         camera.reset(new open_gl_engine::cameras::PerspectiveCamera(screen_params::Width, screen_params::Height, 45, 0.1f, 1000));
         camera->SetPosition({ 0, 20, 20 });
         camera->SetRotationX(-45);
@@ -37,6 +39,7 @@ namespace samples
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.4f, 0.4f, 0.4f, 0);
 
+        DrawSkyGradient();
         DrawWorldGrid();
     }
 
@@ -46,8 +49,28 @@ namespace samples
         cameraHandler.UpdatePosition(deltaTime, window, camera.get());
     }
 
+    void WorldEditor::DrawSkyGradient()
+    {
+        glDisable(GL_DEPTH_TEST);
+
+        static GLuint background_vao = 0;
+        glGenVertexArrays(1, &background_vao);
+
+        skyShader->Bind();
+        skyShader->SetUniform4f("top_color", 0.5f, 0.8,1,1);
+        skyShader->SetUniform4f("mid_color", 0.5f, 0.7,0.8,1);
+        skyShader->SetUniform4f("bot_color", 0.2,0.2,0.2,1);
+
+        glBindVertexArray(background_vao);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glBindVertexArray(0);
+
+        glEnable(GL_DEPTH_TEST);
+    }
+
     void WorldEditor::DrawWorldGrid()
     {
+        shader->Bind();
         //TODO: reduce draw calls
         for(int x = -50; x < 51; x++)
         {
