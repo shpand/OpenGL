@@ -57,9 +57,10 @@ namespace samples
         glGenVertexArrays(1, &background_vao);
 
         skyShader->Bind();
-        skyShader->SetUniform4f("top_color", 0.5f, 0.8,1,1);
-        skyShader->SetUniform4f("mid_color", 0.5f, 0.7,0.8,1);
-        skyShader->SetUniform4f("bot_color", 0.2,0.2,0.2,1);
+        skyShader->SetUniform4f("top_color_top", 0.5f, 0.8, 0.9,1);
+        skyShader->SetUniform4f("top_color_mid", 0.3f, 0.6,0.9,1);
+        skyShader->SetUniform4f("bot_color_mid", 0.3,0.3,0.3,1);
+        skyShader->SetUniform4f("bot_color_bot", 0.2,0.2,0.2,1);
 
         glBindVertexArray(background_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
