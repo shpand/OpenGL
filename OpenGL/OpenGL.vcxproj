@@ -100,14 +100,14 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)/ThirdParty/assimp/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;$(SolutionDir)ThirdParty/assimp/bin/;$(SolutionDir)ThirdParty/assimp/lib/;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -120,14 +120,14 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)/ThirdParty/assimp/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;gdi32.lib;shell32.lib;opengl32.lib;glfw3.lib;glew32s.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;$(SolutionDir)ThirdParty\glew\lib\Release\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>user32.lib;gdi32.lib;shell32.lib;opengl32.lib;glfw3.lib;glew32s.lib;assimp-vc142-mtd.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;$(SolutionDir)ThirdParty/assimp/bin/;$(SolutionDir)ThirdParty/assimp/lib/;$(SolutionDir)ThirdParty\glew\lib\Release\x64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +142,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)/ThirdParty/assimp/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
@@ -151,7 +151,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
       <AdditionalDependencies>user32.lib;gdi32.lib;shell32.lib;opengl32.lib;glfw3.lib;</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;$(SolutionDir)ThirdParty/assimp/bin/;$(SolutionDir)ThirdParty/assimp/lib/;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -166,7 +166,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/ThirdParty/glm/include;$(SolutionDir)ThirdParty/glfw/include;$(SolutionDir)ThirdParty/glew/include;$(SolutionDir)/ThirdParty/assimp/include;$(SolutionDir)OpenGL.Common/src</AdditionalIncludeDirectories>
       <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
@@ -174,8 +174,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;gdi32.lib;shell32.lib;opengl32.lib;glfw3.lib;glew32s.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;$(SolutionDir)ThirdParty\glew\lib\Release\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>user32.lib;gdi32.lib;shell32.lib;opengl32.lib;glfw3.lib;glew32s.lib;assimp-vc142-mtd.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty/glfw/lib-vc2015/;$(SolutionDir)ThirdParty/assimp/bin/;$(SolutionDir)ThirdParty/assimp/lib/;$(SolutionDir)ThirdParty\glew\lib\Release\x64</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
