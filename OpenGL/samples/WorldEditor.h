@@ -3,6 +3,8 @@
 #include "Shader.h"
 #include "cameras/Camera.h"
 
+#include <memory>
+
 namespace samples
 {
     class WorldEditor : public samples::Sample

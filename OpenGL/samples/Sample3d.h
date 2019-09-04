@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "Texture.h"
 #include "cameras/Camera.h"
+#include <memory>
 
 namespace samples
 {
