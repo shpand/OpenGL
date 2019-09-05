@@ -2,8 +2,11 @@
 
 #include "glm/glm.hpp"
 
-struct Vertex {
-	glm::vec3 Position;
-	glm::vec3 Normal;
-	glm::vec2 TexCoords;
-};
+namespace  open_gl_engine {
+
+	struct Vertex {
+		glm::vec3 Position;
+		glm::vec3 Normal;
+		glm::vec2 TexCoords;
+	};
+}

@@ -2,7 +2,11 @@
 
 #include <string>
 
-struct Texture {
-	unsigned int id;
-	std::string type;
-};
+namespace  open_gl_engine {
+
+	struct Texture {
+		unsigned int id;
+		std::string type;
+		std::string path;
+	};
+}

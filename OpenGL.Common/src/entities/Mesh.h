@@ -8,7 +8,9 @@
 
 using namespace std;
 
-class Mesh {
+namespace  open_gl_engine {
+
+	class Mesh {
 	public:
 		/*  Mesh Data  */
 		vector<Vertex> vertices;
@@ -22,4 +24,5 @@ class Mesh {
 		unsigned int VAO, VBO, EBO;
 		/*  Functions    */
 		void setupMesh();
-};
+	};
+}
