@@ -124,4 +124,7 @@
       <Filter>Resource Files\textures</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="thirdParty\dll\assimp-vc142-mtd.dll" />
+  </ItemGroup>
 </Project>

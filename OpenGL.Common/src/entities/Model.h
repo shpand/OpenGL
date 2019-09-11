@@ -15,11 +15,11 @@ namespace  open_gl_engine {
 	{
 	public:
 		/*  Functions   */
-		Model(char* path)
+		Model(const char* path)
 		{
 			loadModel(path);
 		}
-		void Draw(Shader shader);
+		void Draw(Shader& shader);
 	private:
 		/*  Model Data  */
 		vector<Texture> textures_loaded;

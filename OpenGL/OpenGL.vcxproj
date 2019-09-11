@@ -205,6 +205,9 @@
   <ItemGroup>
     <None Include="Basic.shader" />
     <None Include="color.shader" />
+    <CopyFileToFolders Include="thirdParty\dll\assimp-vc142-mtd.dll">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\textures\cube.png" />

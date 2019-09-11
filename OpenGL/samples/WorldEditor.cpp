@@ -18,6 +18,9 @@ namespace samples
         camera.reset(new open_gl_engine::cameras::PerspectiveCamera(screen_params::Width, screen_params::Height, 45, 0.1f, 1000));
         camera->SetPosition({ 0, 20, 20 });
         camera->SetRotationX(-45);
+
+		std::string str = "models/scene.fbx";
+		model.reset(new open_gl_engine::Model(str.c_str()));
     }
 
 
@@ -41,6 +44,7 @@ namespace samples
 
         DrawSkyGradient();
         DrawWorldGrid();
+		DrawScene();
     }
 
     void samples::WorldEditor::UpdateCamera(float deltaTime, GLFWwindow* window)
@@ -110,4 +114,8 @@ namespace samples
             glDrawArrays(GL_LINES, 0, verticalLinePoints.size());
         }
     }
+
+	void WorldEditor::DrawScene() {
+		model->Draw(*shader);
+	}
 }
