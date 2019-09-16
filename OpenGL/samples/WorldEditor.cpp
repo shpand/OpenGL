@@ -6,9 +6,16 @@
 
 namespace samples
 {
+	static WorldEditor* editorInstance;
 
-    WorldEditor::WorldEditor()
+	void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+
+    WorldEditor::WorldEditor(GLFWwindow& window)
     {
+		editorInstance = this;
+
+		glfwSetCursorPosCallback(&window, mouse_callback);
+
         shader.reset(new Shader("Basic.shader"));
         shader->Bind();
         shader->SetUniformMat4f("u_MVP", glm::mat4(1.f));
@@ -117,5 +124,32 @@ namespace samples
 
 	void WorldEditor::DrawScene() {
 		model->Draw(*shader);
+	}
+
+
+	float mouseSensitivity = 0.1;
+	float lastX = screen_params::Width / 2.0f;
+	float lastY = screen_params::Height / 2.0f;
+	bool firstMouse = true;
+	void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+	{
+		xpos *= mouseSensitivity;
+		ypos *= mouseSensitivity;
+
+		if (firstMouse)
+		{
+			lastX = xpos;
+			lastY = ypos;
+			firstMouse = false;
+		}
+
+		float xoffset = xpos - lastX;
+		float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+		lastX = xpos;
+		lastY = ypos;
+
+		editorInstance->camera->SetRotationY(-lastX);
+		editorInstance->camera->SetRotationX(lastY);
 	}
 }

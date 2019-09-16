@@ -49,7 +49,7 @@ int main() {
 
     //samples::Sample* sample = new samples::MovingSquareAndCubeSample();
     //samples::Sample* sample = new samples::Sample3d();
-    samples::Sample* sample = new samples::WorldEditor();
+    samples::Sample* sample = new samples::WorldEditor(*window);
 
     FpsCounter fps(window);
     double lastTime = 0;

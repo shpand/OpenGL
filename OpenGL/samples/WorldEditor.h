@@ -11,10 +11,12 @@ namespace samples
     class WorldEditor : public samples::Sample
     {
     public:
-        WorldEditor();
+        WorldEditor(GLFWwindow& window);
         ~WorldEditor();
         void OnUpdate(float deltaTime, GLFWwindow* window) override;
         void OnRender() override;
+
+		std::shared_ptr<open_gl_engine::cameras::Camera> camera;
 
     private:
         void UpdateCamera(float deltaTime, GLFWwindow* window);
@@ -24,7 +26,6 @@ namespace samples
 
         std::unique_ptr<Shader> shader;
         std::unique_ptr<Shader> skyShader;
-        std::shared_ptr<open_gl_engine::cameras::Camera> camera;
 		std::unique_ptr<open_gl_engine::Model> model;
     };
 }
