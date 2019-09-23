@@ -22,6 +22,10 @@ namespace open_gl_engine
             float GetRotationZ() const { return m_RotationZ; }
             void SetRotationZ(float rotation) { m_RotationZ = rotation; RecalculateViewMatrix(); }
 
+        	void RotateX(float rotation) { SetRotationX(GetRotationX() + rotation); }
+        	void RotateY(float rotation) { SetRotationY(GetRotationY() + rotation); }
+        	void RotateZ(float rotation) { SetRotationZ(GetRotationZ() + rotation); }
+
             const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
             const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
             const glm::mat4& GetViewProjectionMatrix() const { return m_ViewProjectionMatrix; }
