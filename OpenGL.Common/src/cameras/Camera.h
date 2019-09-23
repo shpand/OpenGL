@@ -1,5 +1,7 @@
 #pragma once
 
+#include <algorithm>
+
 #include "glm/glm.hpp"
 
 namespace open_gl_engine
@@ -16,7 +18,7 @@ namespace open_gl_engine
             void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
 
             float GetRotationX() const { return m_RotationX; }
-            void SetRotationX(float rotation) { m_RotationX = rotation; RecalculateViewMatrix(); }
+			void SetRotationX(float rotation) { m_RotationX = rotation; m_RotationX = std::clamp(m_RotationX, -89.f, 89.f); RecalculateViewMatrix(); }
             float GetRotationY() const { return m_RotationY; }
             void SetRotationY(float rotation) { m_RotationY = rotation; RecalculateViewMatrix(); }
             float GetRotationZ() const { return m_RotationZ; }

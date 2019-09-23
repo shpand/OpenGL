@@ -144,8 +144,8 @@ namespace samples
 			return;
 		}
 
-		float xoffset = xpos - lastX;
-		float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+		const float xoffset = xpos - lastX;
+		const float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
 
 		lastX = xpos;
 		lastY = ypos;
