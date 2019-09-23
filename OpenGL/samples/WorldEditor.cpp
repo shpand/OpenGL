@@ -141,6 +141,7 @@ namespace samples
 			lastX = xpos;
 			lastY = ypos;
 			firstMouse = false;
+			return;
 		}
 
 		float xoffset = xpos - lastX;
@@ -149,7 +150,7 @@ namespace samples
 		lastX = xpos;
 		lastY = ypos;
 
-		editorInstance->camera->SetRotationY(-lastX);
-		editorInstance->camera->SetRotationX(lastY);
+		editorInstance->camera->RotateY(-xoffset);
+		editorInstance->camera->RotateX(yoffset);
 	}
 }
