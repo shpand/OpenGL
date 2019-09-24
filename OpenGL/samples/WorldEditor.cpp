@@ -26,7 +26,8 @@ namespace samples
         camera->SetPosition({ 0, 20, 20 });
         camera->SetRotationX(-45);
 
-		std::string str = "resources/models/crysisSuit/scene.fbx";
+		//std::string str = "resources/models/crysisSuit/scene.fbx";
+		std::string str = "resources/models/house/Toepferhaus_neu.obj";
 		model.reset(new open_gl_engine::Model(str.c_str()));
     }
 
