@@ -1,10 +1,10 @@
 .vs
 **/Debug
+**/Release
 
 *.exe
 *.pdb
 *.log
 *.tlog
-*.obj
 *.i
 
