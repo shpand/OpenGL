@@ -22,9 +22,12 @@ layout(location = 0) out vec3 color;
 
 in vec2 v_TexCoord;
 
-uniform sampler2D u_Texture; //location of our texture
+uniform sampler2D texture_diffuse1; //location of our texture
+uniform sampler2D texture_diffuse2; //location of our texture
+uniform sampler2D texture_specular1; //location of our texture
+uniform sampler2D texture_specular2; //location of our texture
 
 void main()
 {
-    color = texture(u_Texture, v_TexCoord).rgb;
+    color = texture(texture_diffuse1, v_TexCoord).rgb;
 }
