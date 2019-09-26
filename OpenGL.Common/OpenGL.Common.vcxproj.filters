@@ -115,6 +115,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\SkyGradient.shader" />
+    <None Include="src\shaders\SkyGradient.glsl" />
   </ItemGroup>
 </Project>
