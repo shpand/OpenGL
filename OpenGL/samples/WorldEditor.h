@@ -5,6 +5,7 @@
 #include <entities\Model.h>
 
 #include <memory>
+#include "../renderers/SkyBoxRenderer.h"
 
 namespace samples
 {
@@ -21,7 +22,6 @@ namespace samples
     private:
         void UpdateCamera(float deltaTime, GLFWwindow* window);
         void DrawSkyGradient();
-        static unsigned int LoadSkyBox();
         void DrawSkyBox();
         void DrawWorldGrid();
 		void DrawScene();
@@ -30,8 +30,7 @@ namespace samples
         std::unique_ptr<Shader> skyShader;
         std::unique_ptr<Shader> skyboxShader;
 		std::unique_ptr<open_gl_engine::Model> model;
-		std::unique_ptr<vector<float>> skyboxPoints;
-		unsigned skyboxCubemapTextureId;
+		std::unique_ptr<SkyBoxRenderer> skyBoxRenderer;
     };
 }
 
