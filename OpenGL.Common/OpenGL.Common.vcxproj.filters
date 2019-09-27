@@ -116,5 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\SkyGradient.glsl" />
+    <None Include="src\shaders\Skybox.glsl" />
   </ItemGroup>
 </Project>
