@@ -25,7 +25,6 @@ namespace samples
         shader->SetUniformMat4f("u_MVP", glm::mat4(1.f));
 
         skyShader.reset(new Shader("../OpenGL.Common/src/shaders/SkyGradient.glsl"));
-		skyboxShader.reset(new Shader("../OpenGL.Common/src/shaders/Skybox.glsl"));
 
         camera.reset(new open_gl_engine::cameras::PerspectiveCamera(screen_params::Width, screen_params::Height, 45, 0.1f, 1000));
         camera->SetPosition({ 0, 20, 20 });
@@ -35,7 +34,7 @@ namespace samples
 		//std::string str = "resources/models/house/Toepferhaus_neu.obj";
 		model.reset(new open_gl_engine::Model(str.c_str()));
 
-		skyBoxRenderer.reset(new SkyBoxRenderer(skyboxShader.get()));
+		skyBoxRenderer.reset(new SkyBoxRenderer());
     }
 
 

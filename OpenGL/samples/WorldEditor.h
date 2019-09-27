@@ -28,7 +28,6 @@ namespace samples
 
         std::unique_ptr<Shader> shader;
         std::unique_ptr<Shader> skyShader;
-        std::unique_ptr<Shader> skyboxShader;
 		std::unique_ptr<open_gl_engine::Model> model;
 		std::unique_ptr<SkyBoxRenderer> skyBoxRenderer;
     };

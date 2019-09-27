@@ -8,16 +8,12 @@
 class SkyBoxRenderer
 {
 public:
-	SkyBoxRenderer(Shader* shader)
+	SkyBoxRenderer()
 	{
-		this->shader = shader;
-		
+		skyboxShader.reset(new Shader("../OpenGL.Common/src/shaders/Skybox.glsl"));
+
 		//setting skybox
 		skyboxCubemapTextureId = LoadSkyBox();
-
-		//Cube cube = Cube(0, 0, 0, 2, 2, 2);
-		//vector<float> points = cube.GetPoints();
-
 
 		// skybox VAO
 		unsigned int skyboxVBO;
@@ -32,14 +28,13 @@ public:
 
 	~SkyBoxRenderer(){}
 
-
 	void Draw(open_gl_engine::cameras::Camera* camera)
 	{
-		shader->Bind();
+		skyboxShader->Bind();
 
 		glm::mat4 view = glm::mat4(glm::mat3(camera->GetViewMatrix())); // remove translation from the view matrix
-		shader->SetUniformMat4f("view", view);
-		shader->SetUniformMat4f("projection", camera->GetProjectionMatrix());
+		skyboxShader->SetUniformMat4f("view", view);
+		skyboxShader->SetUniformMat4f("projection", camera->GetProjectionMatrix());
 
 		// draw skybox as last
 		glDepthFunc(GL_LEQUAL);  // change depth function so depth test passes when values are equal to depth buffer's content
@@ -57,7 +52,7 @@ private:
 	unsigned skyboxCubemapTextureId;
 	unsigned skyboxVAO;
 
-	Shader* shader;
+	std::unique_ptr<Shader> skyboxShader;
 	float points[108] = {
 		// positions          
 		-1.0f,  1.0f, -1.0f,
